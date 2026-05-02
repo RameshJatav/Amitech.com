@@ -1,0 +1,43 @@
+    <aside class="w-64 bg-slate-900 text-slate-300 flex flex-col transition-all duration-300">
+        <div class="p-6 flex items-center space-x-3">
+            <div class="w-8 h-8 bg-indigo-500 rounded flex items-center justify-center text-white font-bold">E</div>
+            <span class="text-xl font-bold text-white tracking-wider">SCHOOL MS</span>
+        </div>
+
+        <nav class="flex-grow px-4 space-y-2 mt-4 overflow-y-auto">
+            <a href="#" onclick="showSection('overview')" class="sidebar-link flex items-center space-x-3 p-3 hover:bg-slate-800 rounded-xl transition active">
+                <i class="fas fa-th-large w-5"></i> <span>Overview</span>
+            </a>
+            
+            <div class="pt-4 pb-2 text-xs font-bold text-slate-500 uppercase">Management</div>
+            
+            <a href="#" onclick="showSection('studentAuth')" class="sidebar-link flex items-center space-x-3 p-3 hover:bg-slate-800 rounded-xl transition">
+                <i class="fas fa-user-graduate w-5"></i> <span>Student Auth</span>
+            </a>
+            <a href="#" onclick="showSection('admission')" class="sidebar-link flex items-center space-x-3 p-3 hover:bg-slate-800 rounded-xl transition">
+                <i class="fas fa-file-signature w-5"></i> <span>Admissions</span>
+            </a>
+            <a href="#" onclick="showSection('fees')" class="sidebar-link flex items-center space-x-3 p-3 hover:bg-slate-800 rounded-xl transition">
+                <i class="fas fa-file-invoice-dollar w-5"></i> <span>Fee Management</span>
+            </a>
+            <a href="#" onclick="showSection('attendance')" class="sidebar-link flex items-center space-x-3 p-3 hover:bg-slate-800 rounded-xl transition">
+                <i class="fas fa-calendar-check w-5"></i> <span>Attendance</span>
+            </a>
+
+            <div class="pt-4 pb-2 text-xs font-bold text-slate-500 uppercase">Accounts</div>
+            
+            <a href="#" onclick="showSection('bank')" class="sidebar-link flex items-center space-x-3 p-3 hover:bg-slate-800 rounded-xl transition">
+                <i class="fas fa-university w-5"></i> <span>Bank Details</span>
+            </a>
+            <a href="#" onclick="showSection('expenses')" class="sidebar-link flex items-center space-x-3 p-3 hover:bg-slate-800 rounded-xl transition">
+                <i class="fas fa-wallet w-5"></i> <span>Admin Expenses</span>
+            </a>
+        </nav>
+
+        <div class="p-4 border-t border-slate-800">
+            <button onclick="logout()" class="w-full flex items-center space-x-3 p-3 text-red-400 hover:bg-red-500/10 rounded-xl transition font-medium">
+                <i class="fas fa-sign-out-alt w-5"></i> <span>Logout</span>
+            </button>
+        </div>
+    </aside>
+    

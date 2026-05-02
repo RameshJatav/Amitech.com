@@ -1,0 +1,14 @@
+[
+  {
+    "id": 1777632668744,
+    "title": "Senior Node.js Developer",
+    "post": "We are looking for a skilled Senior Node.js Developer to build and manage a notification system where users will receive notifications and apply through the platform. The developer will be responsible for designing backend services, APIs, and ensuring high performance and scalability of the system.  You will work on creating a real-time notification engine, integrating user application flow, and maintaining secure and efficient server-side logic.",
+    "description": "Develop and maintain backend services using Node.js\nBuild a scalable notification system (push/email/SMS or in-app)\nCreate and manage RESTful APIs\nHandle user application flow (apply system)\nDatabase design and optimization (MongoDB/MySQL)\nEnsure security, performance, and scalability\nDebug and fix production issues\nCollaborate with frontend and product team",
+    "skills": "Strong knowledge of Node.js & Express.js Experience with MongoDB / MySQL Understanding of REST APIs Knowledge of real-time systems (WebSocket / Socket.io) Basic understanding of authentication (JWT, OAuth) Experience in building notification systems Good problem-solving skills Git & version control",
+    "salary": "65320",
+    "experience": "5year Experience",
+    "jobType": "Full Time",
+    "urgent": true,
+    "time": "1/5/2026, 4:21:08 pm"
+  }
+]

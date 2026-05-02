@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Applications</title>
+<script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-100">
+
+<div class="bg-black text-white p-4 text-center">
+Applications
+</div>
+
+<div id="apps" class="max-w-4xl mx-auto p-4"></div>
+
+<script>
+
+async function load() {
+    try {
+        let res = await fetch("http://localhost:8000/applications");
+
+        if (!res.ok) {
+            throw new Error("Server error");
+        }
+
+        let data = await res.json();
+
+        document.getElementById("apps").innerHTML = data.reverse().map(a => `
+            <div class="bg-white p-4 rounded shadow mb-3">
+                <h2 class="font-bold">${a.name}</h2>
+                <p>Job: ${a.jobTitle}</p>
+                <p>Email: ${a.email}</p>
+                <p>Education: ${a.education}</p>
+                <p>Experience: ${a.experience}</p>
+                <a href="${a.resume}" class="text-blue-600">Resume</a>
+            </div>
+        `).join("");
+
+    } catch (err) {
+        console.log("Fetch error:", err);
+    }
+}
+
+load();
+
+</script>
+
+</body>
+</html>

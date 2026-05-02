@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Apply Job</title>
+<script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-100 flex justify-center items-center min-h-screen">
+
+<div class="bg-white p-6 rounded-xl shadow w-full max-w-md">
+
+<h2 class="text-xl font-bold mb-4">Apply Job</h2>
+
+<form id="form" class="space-y-3">
+
+<input id="name" placeholder="Name" class="w-full border p-2 rounded">
+<input id="email" placeholder="Email" class="w-full border p-2 rounded">
+<input id="education" placeholder="Education" class="w-full border p-2 rounded">
+<textarea id="experience" placeholder="Experience" class="w-full border p-2 rounded"></textarea>
+<input id="resume" placeholder="Resume Link" class="w-full border p-2 rounded">
+
+<button type="submit" class="w-full bg-green-600 text-white py-2 rounded">
+Submit
+</button>
+
+</form>
+
+<p id="msg" class="text-green-600 mt-2"></p>
+
+</div>
+
+<script>
+// Get URL params (jobId, title)
+const params = new URLSearchParams(window.location.search);
+
+// Elements reference (IMPORTANT FIX)
+const form = document.getElementById("form");
+const msg = document.getElementById("msg");
+
+const nameEl = document.getElementById("name");
+const emailEl = document.getElementById("email");
+const educationEl = document.getElementById("education");
+const experienceEl = document.getElementById("experience");
+const resumeEl = document.getElementById("resume");
+
+form.addEventListener("submit", async (e) => {
+    e.preventDefault(); // stop page reload
+
+    try {
+        const response = await fetch("http://localhost:8000/apply-job", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                jobId: params.get("jobId"),
+                jobTitle: params.get("title"),
+                name: nameEl.value,
+                email: emailEl.value,
+                education: educationEl.value,
+                experience: experienceEl.value,
+                resume: resumeEl.value
+            })
+        });
+
+        if (!response.ok) {
+            throw new Error("Server error");
+        }
+
+        msg.innerText = "Application Submitted Successfully! 🎉";
+
+        // OPTIONAL: clear form after submit
+        form.reset();
+
+    } catch (error) {
+        console.error(error);
+        msg.innerText = "Failed to submit application ❌";
+    }
+});
+</script>
+
+</body>
+</html>

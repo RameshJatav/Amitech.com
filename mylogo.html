@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>AmiTech Premium Logo</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800;900&display=swap" rel="stylesheet">
+
+<style>
+  body{
+    font-family:'Montserrat',sans-serif;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+    background:#f3f4f6;
+  }
+</style>
+</head>
+
+<body>
+
+<div class="flex flex-col items-center gap-6">
+  <canvas id="logoCanvas" width="800" height="300"></canvas>
+
+  <button id="downloadBtn"
+    class="px-6 py-3 bg-gradient-to-r from-purple-600 via-blue-600 to-cyan-500 text-white font-semibold rounded-lg shadow-lg hover:scale-105 transition">
+    Download PNG
+  </button>
+</div>
+
+<script>
+const canvas=document.getElementById("logoCanvas");
+const ctx=canvas.getContext("2d");
+
+ctx.clearRect(0,0,canvas.width,canvas.height);
+ctx.textBaseline="middle";
+
+// ================= LEFT: ATS =================
+ctx.textAlign="left";
+ctx.font="900 140px Montserrat";
+
+const ats=ctx.createLinearGradient(0,0,350,0);
+ats.addColorStop(0,"#6D28D9");
+ats.addColorStop(0.5,"#2563EB");
+ats.addColorStop(1,"#06B6D4");
+
+ctx.fillStyle=ats;
+ctx.shadowColor="rgba(0,0,0,0.2)";
+ctx.shadowBlur=20;
+ctx.fillText("ATS",40,canvas.height/2);
+ctx.shadowBlur=0;
+
+// divider (thin elegant)
+ctx.strokeStyle="#E5E7EB";
+ctx.lineWidth=2;
+ctx.beginPath();
+ctx.moveTo(420,60);
+ctx.lineTo(420,240);
+ctx.stroke();
+
+// ================= RIGHT: AmiTech =================
+ctx.textAlign="left";
+
+// "Ami"
+const amiGrad=ctx.createLinearGradient(450,0,650,0);
+amiGrad.addColorStop(0,"#F97316");
+amiGrad.addColorStop(0.5,"#F59E0B");
+amiGrad.addColorStop(1,"#EAB308");
+
+ctx.fillStyle=amiGrad;
+ctx.font="800 58px Montserrat";
+ctx.fillText("Ami",450,canvas.height/2);
+
+// ================= CLEAN PREMIUM T (ICON STYLE) =================
+const x=560;
+const y=canvas.height/2;
+
+// soft shadow
+ctx.shadowColor="rgba(0,0,0,0.15)";
+ctx.shadowBlur=10;
+
+// top bar (purple)
+ctx.fillStyle="#7C3AED";
+ctx.fillRect(x,y-50,75,14);
+
+// vertical stem (centered clean)
+ctx.fillRect(x+30,y-50,14,105);
+
+// bottom accent (orange small highlight)
+ctx.fillStyle="#F59E0B";
+ctx.fillRect(x+10,y+25,55,10);
+
+// reset
+ctx.shadowBlur=0;
+
+// "ech"
+ctx.fillStyle="#374151";
+ctx.font="800 58px Montserrat";
+ctx.fillText("ech",650,canvas.height/2);
+
+// ================= DOWNLOAD =================
+document.getElementById("downloadBtn").addEventListener("click",function(){
+  const link=document.createElement("a");
+  link.download="AmiTech_Premium_Logo.png";
+  link.href=canvas.toDataURL("image/png");
+  link.click();
+});
+</script>
+
+</body>
+</html>

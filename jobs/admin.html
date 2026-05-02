@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Admin - Post Job</title>
+<script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-100 flex justify-center items-center min-h-screen">
+
+<div class="bg-white p-8 rounded-2xl shadow-lg w-full max-w-xl">
+
+    <h2 class="text-2xl font-bold mb-6 text-gray-800">Create Job Post</h2>
+
+    <form id="jobForm" class="space-y-4">
+
+        <!-- Job Title -->
+        <div>
+            <label class="text-sm font-medium">Job Title *</label>
+            <input id="title" required
+                placeholder="e.g. Senior Node.js Developer"
+                class="w-full border p-3 rounded-lg focus:outline-blue-500">
+        </div>
+
+        <!-- Job Role -->
+        <div>
+            <label class="text-sm font-medium">Job Role / Position *</label>
+            <input id="post" required
+                placeholder="e.g. Backend Developer"
+                class="w-full border p-3 rounded-lg">
+        </div>
+
+        <!-- Description -->
+        <div>
+            <label class="text-sm font-medium">Job Description *</label>
+            <textarea id="description" required rows="4"
+                placeholder="Write job responsibilities, work details..."
+                class="w-full border p-3 rounded-lg"></textarea>
+        </div>
+
+        <!-- Skills -->
+        <div>
+            <label class="text-sm font-medium">Required Skills *</label>
+            <input id="skills" required
+                placeholder="e.g. Node.js, Express, MongoDB, REST API"
+                class="w-full border p-3 rounded-lg">
+        </div>
+
+        <!-- Salary -->
+        <div>
+            <label class="text-sm font-medium">Salary *</label>
+            <input id="salary" required
+                placeholder="e.g. ₹50,000 per month"
+                class="w-full border p-3 rounded-lg">
+        </div>
+
+        <!-- Experience -->
+        <div>
+            <label class="text-sm font-medium">Experience Required</label>
+            <input id="experience"
+                placeholder="e.g. 3+ Years"
+                class="w-full border p-3 rounded-lg">
+        </div>
+
+        <!-- Job Type -->
+        <div>
+            <label class="text-sm font-medium">Job Type</label>
+            <select id="jobType" class="w-full border p-3 rounded-lg">
+                <option value="Full Time">Full Time</option>
+                <option value="Part Time">Part Time</option>
+                <option value="Remote">Remote</option>
+                <option value="Contract">Contract</option>
+            </select>
+        </div>
+
+        <!-- Urgent -->
+        <div class="flex items-center gap-2">
+            <input type="checkbox" id="urgent">
+            <label class="text-sm">Mark as Urgent Hiring</label>
+        </div>
+
+        <!-- Button -->
+        <button type="submit"
+            class="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-lg font-semibold">
+            Post Job
+        </button>
+
+    </form>
+
+</div>
+
+<script>
+
+jobForm.onsubmit = async (e) => {
+    e.preventDefault();
+
+    await fetch("http://localhost:8000/add-job", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+            title: title.value,
+            post: post.value,
+            description: description.value,
+            skills: skills.value,
+            salary: salary.value,
+            experience: experience.value,
+            jobType: jobType.value,
+            urgent: urgent.checked
+        })
+    });
+
+    alert("Job Posted Successfully!");
+    jobForm.reset();
+}
+
+</script>
+
+</body>
+</html>
